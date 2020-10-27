@@ -51,10 +51,13 @@ async function submitForm(e) {
   name.value = ''
   score.value = ''
 
-  if (res.status === 'write success') {
-    list.innerHTML = ''
-    getRecords()
-  }
+  list.innerHTML = ''
+  getRecords()
+
+  // if (res.status === 'write success') {
+  //   list.innerHTML = ''
+  //   getRecords()
+  // }
 
   // location.reload();
 
