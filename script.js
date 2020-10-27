@@ -42,7 +42,7 @@ async function submitForm(e) {
 
   await fetch(api, {
     body: JSON.stringify(tempData),
-    credentials: 'include',
+    credentials: 'true',
     headers: { 'Content-Type': 'application/json' },
     method: 'POST'
   })
