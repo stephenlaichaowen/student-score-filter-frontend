@@ -23,7 +23,7 @@ async function getRecords() {
       <tr>
         <td>${student.name}</td>
         <td>${student.score}</td>        
-        <td onclick="alert(${student.name})">&#10006;</td>
+        <td onclick="console.log(${student.name})">&#10006;</td>
       </tr>
     `
     // function del(id) { console.log(id) }
