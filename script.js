@@ -1,6 +1,7 @@
 const name = document.querySelector('#name')
 const score = document.querySelector('#score')
-const myForm = document.querySelector('#myForm')
+const myForm = document.querySelector('#myform')
+const btnSubmit = document.querySelector('#btn-submit')
 const list = document.querySelector('#list')
 const btnFilter = document.querySelector('#btn-filter')
 const searchBox = document.querySelector('#search-box')
@@ -9,42 +10,44 @@ const api = 'https://student-score-filter-backend.herokuapp.com'
 let tempArray = []
 let records = []
 
+if (myForm) myForm.addEventListener('submit', submitForm)
+if (searchBox) searchBox.addEventListener('keyup', searchKey)
+
 getRecords()
-myForm.addEventListener('submit', submitForm)
-searchBox.addEventListener('keyup', searchKey)
-// btnFilter.addEventListener('click', filterScore)
 
 async function getRecords() {
-  
+
+  if (list) list.innerHTML = ''
+
   const res = await fetch(api)
   records = await res.json()
-  
-  records.forEach(student => {
-    list.innerHTML = ''
+  records.length > 0 ? records.forEach(student => {
+    if (list) {
     list.innerHTML += `
       <tr>
         <td>${student.name}</td>
         <td>${student.score}</td>   
         <td id="del" onclick="delRecord(${student.id})">&#10006;</td>
       </tr>
-    `
-  })
+    ` }
+  }) : ''
 }
 
 async function delRecord(id) {
-  const res = await fetch(`${api}/${id}`, { 
+  const res = await fetch(`${api}/${id}`, {
     method: 'DELETE',
     headers: {
       'Content-type': 'application/json'
     },
   })
-  const { newArray } = await res.json()
-  tempArray = newArray  
+  const { status, newArray } = await res.json()
+  console.log(`status: ${status}`);
+  tempArray = newArray
   showNewRecords()
 }
 
 function showNewRecords() {
-  list.innerHTML = ''  
+  list.innerHTML = ''
   tempArray.forEach(student => {
     list.innerHTML += `
       <tr>
@@ -97,21 +100,22 @@ function searchKey() {
         </tr>
       `
   }) : ''
-  
+
   if (searchBox.value === '') getRecords()
 }
 
-function filterScore() {
-  list.innerHTML = ''
-  tempArray = records.filter(student => student.score === searchBox.value)
-  tempArray.length > 0 ? tempArray.forEach(student => {
-    list.innerHTML += `
-        <tr>
-          <td>${student.name}</td>
-          <td>${student.score}</td>
-        </tr>
-      `
-  }) : ''
-}
+// btnFilter.addEventListener('click', filterScore)
+// function filterScore() {
+//   list.innerHTML = ''
+//   tempArray = records.filter(student => student.score === searchBox.value)
+//   tempArray.length > 0 ? tempArray.forEach(student => {
+//     list.innerHTML += `
+//         <tr>
+//           <td>${student.name}</td>
+//           <td>${student.score}</td>
+//         </tr>
+//       `
+//   }) : ''
+// }
 
 
