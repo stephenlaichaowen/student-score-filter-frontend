@@ -44,7 +44,8 @@ async function submitForm(e) {
     body: JSON.stringify(tempData),
     headers: { 'Content-Type': 'application/json' },
     method: 'POST',
-    mode: 'cors'
+    mode: 'cors',
+    redirect: 'follow'
   })
 
   name.value = ''
@@ -54,7 +55,7 @@ async function submitForm(e) {
     list.innerHTML = ''
     getRecords()
   }
-  
+
   // location.reload();
 
 }
