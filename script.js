@@ -54,8 +54,8 @@ async function submitForm(e) {
   const data = await res.json()
   console.log(data);
 
-  list.innerHTML = ''
   data.length > 0 ? data.forEach(student => {
+    list.innerHTML = ''
     list.innerHTML += `
         <tr>
           <td>${student.name}</td>
