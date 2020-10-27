@@ -38,10 +38,13 @@ async function delRecord(id) {
     },
   })
   const { newArray } = await res.json()
-  console.log(newArray);  
-  // getRecords()
-  list.innerHTML = ''
-  newArray.forEach(student => {
+  tempArray = newArray  
+  showNewRecords()
+}
+
+function showNewRecords() {
+  list.innerHTML = ''  
+  tempArray.forEach(student => {
     list.innerHTML += `
       <tr>
         <td>${student.name}</td>
