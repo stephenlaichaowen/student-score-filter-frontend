@@ -79,7 +79,7 @@ function searchKey() {
         <tr>
           <td>${student.name}</td>
           <td>${student.score}</td>
-          <td id="del">&#10006;</td>
+          <td onclick="console.log(${student.id});alert('Are you sure to delete this itme ?')">&#10006;</td>
         </tr>
       `
   }) : ''
