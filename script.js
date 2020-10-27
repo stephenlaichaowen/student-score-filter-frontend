@@ -26,7 +26,6 @@ async function getRecords() {
         <td onclick="console.log(${student.id});alert('Are you sure to delete this itme ?')">&#10006;</td>
       </tr>
     `
-    // function del(id) { console.log(id) }
   })
 
 }
@@ -59,16 +58,6 @@ async function submitForm(e) {
 
   list.innerHTML = ''
   getRecords()
-
-  // data.length > 0 ? data.forEach(student => {
-  //   list.innerHTML = ''
-  //   list.innerHTML += `
-  //       <tr>
-  //         <td>${student.name}</td>
-  //         <td>${student.score}</td>
-  //       </tr>
-  //     `
-  // }) : ''
 }
 
 function searchKey() {
