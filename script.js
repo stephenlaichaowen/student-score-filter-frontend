@@ -42,10 +42,8 @@ async function submitForm(e) {
 
   await fetch(api, {
     body: JSON.stringify(tempData),
-    headers: { 
-      'Content-Type': 'application/json',
-      'Access-Control-Allow-Origin': '*'
-    },
+    credentials: 'include',
+    headers: { 'Content-Type': 'application/json' },
     method: 'POST',
     mode: 'cors'
   })
