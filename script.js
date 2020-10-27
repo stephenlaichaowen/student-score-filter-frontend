@@ -49,13 +49,14 @@ async function delRecord(id) {
 function showNewRecords() {
   list.innerHTML = ''
   tempArray.forEach(student => {
+    if (list) {
     list.innerHTML += `
       <tr>
         <td>${student.name}</td>
         <td>${student.score}</td>   
         <td id="del" onclick="delRecord(${student.id})">&#10006;</td>
       </tr>
-    `
+    `}
   })
 }
 
@@ -92,13 +93,14 @@ function searchKey() {
   tempArray = records.filter(student => student.score === searchBox.value.toUpperCase())
   list.innerHTML = ''
   tempArray.length > 0 ? tempArray.forEach(student => {
+    if (list) {
     list.innerHTML += `
         <tr>
           <td>${student.name}</td>
           <td>${student.score}</td>
           <td onclick="console.log(${student.id});alert('Are you sure to delete this itme ?')">&#10006;</td>
         </tr>
-      `
+      `}
   }) : ''
 
   if (searchBox.value === '') getRecords()
