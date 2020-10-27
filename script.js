@@ -50,7 +50,11 @@ async function submitForm(e) {
   name.value = ''
   score.value = ''
 
-  location.reload();
+  list.innerHTML = ''
+  getRecords()
+
+  // location.reload();
+
 }
 
 function searchKey() {
