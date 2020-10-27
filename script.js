@@ -22,10 +22,13 @@ async function getRecords() {
     list.innerHTML += `
       <tr>
         <td>${student.name}</td>
-        <td>${student.score}</td>
+        <td>${student.score}</td>        
+        <td id="del">&#10006;</td>
       </tr>
     `
   })
+  const btnDel = document.querySelector('#del')
+  btnDel.addEventListener('click', () => console.log('are you sure to delete this itme ?'))
 }
 
 async function submitForm(e) {
@@ -76,10 +79,14 @@ function searchKey() {
         <tr>
           <td>${student.name}</td>
           <td>${student.score}</td>
+          <td id="del">&#10006;</td>
         </tr>
       `
   }) : ''
 
+  const btnDel = document.querySelector('#del')
+  btnDel.addEventListener('click', () => console.log('are you sure to delete this itme ?'))
+  
   if (searchBox.value === '') getRecords()
 }
 
