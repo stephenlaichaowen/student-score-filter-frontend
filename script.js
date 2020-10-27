@@ -4,8 +4,8 @@ const myForm = document.querySelector('#myForm')
 const list = document.querySelector('#list')
 const btnFilter = document.querySelector('#btn-filter')
 const searchBox = document.querySelector('#search-box')
-// const api = 'http://localhost:5000'
-const api = 'https://student-score-filter-backend.herokuapp.com/'
+const api = 'http://localhost:5000'
+// const api = 'https://student-score-filter-backend.herokuapp.com/'
 let tempArray = []
 let records = []
 
@@ -18,6 +18,7 @@ async function getRecords() {
   const res = await fetch(api)
   records = await res.json()
 
+  list.innerHTML = ''
   records.forEach(student => {
     list.innerHTML += `
       <tr>
@@ -30,10 +31,25 @@ async function getRecords() {
 }
 
 async function delRecord(id) {
-  const res = await fetch(`${api}/${id}`, { method: 'DELETE' })
-  const status = await res.json()
-  console.log(status);
+  const res = await fetch(`${api}/${id}`, { 
+    method: 'DELETE',
+    headers: {
+      'Content-type': 'application/json'
+    },
+  })
+  const { newArray } = await res.json()
+  console.log(newArray);  
   // getRecords()
+  list.innerHTML = ''
+  newArray.forEach(student => {
+    list.innerHTML += `
+      <tr>
+        <td>${student.name}</td>
+        <td>${student.score}</td>   
+        <td id="del" onclick="delRecord(${student.id})">&#10006;</td>
+      </tr>
+    `
+  })
 }
 
 async function submitForm(e) {
@@ -62,7 +78,6 @@ async function submitForm(e) {
   const data = await res.json()
   console.log(data);
 
-  list.innerHTML = ''
   getRecords()
 }
 
