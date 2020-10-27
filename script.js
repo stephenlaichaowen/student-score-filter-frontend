@@ -23,12 +23,14 @@ async function getRecords() {
       <tr>
         <td>${student.name}</td>
         <td>${student.score}</td>        
-        <td id="del">&#10006;</td>
+        <td onclick="del(${student.id})">&#10006;</td>
       </tr>
     `
   })
-  const btnDel = document.querySelector('#del')
-  btnDel.addEventListener('click', () => console.log('are you sure to delete this itme ?'))
+
+  function del(id) {
+    console.log(id);
+  }
 }
 
 async function submitForm(e) {
