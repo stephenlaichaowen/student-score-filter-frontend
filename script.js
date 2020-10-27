@@ -52,7 +52,8 @@ async function submitForm(e) {
   score.value = ''
 
   const data = await res.json()
-  
+  console.log(data);
+
   list.innerHTML = ''
   data.length > 0 ? data.forEach(student => {
     list.innerHTML += `
@@ -62,11 +63,6 @@ async function submitForm(e) {
         </tr>
       `
   }) : ''
-
-
-
-  // location.reload();
-
 }
 
 function searchKey() {
