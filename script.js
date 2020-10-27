@@ -54,15 +54,18 @@ async function submitForm(e) {
   const data = await res.json()
   console.log(data);
 
-  data.length > 0 ? data.forEach(student => {
-    list.innerHTML = ''
-    list.innerHTML += `
-        <tr>
-          <td>${student.name}</td>
-          <td>${student.score}</td>
-        </tr>
-      `
-  }) : ''
+  list.innerHTML = ''
+  getRecords()
+
+  // data.length > 0 ? data.forEach(student => {
+  //   list.innerHTML = ''
+  //   list.innerHTML += `
+  //       <tr>
+  //         <td>${student.name}</td>
+  //         <td>${student.score}</td>
+  //       </tr>
+  //     `
+  // }) : ''
 }
 
 function searchKey() {
