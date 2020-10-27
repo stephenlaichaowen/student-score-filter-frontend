@@ -4,7 +4,8 @@ const myForm = document.querySelector('#myForm')
 const list = document.querySelector('#list')
 const btnFilter = document.querySelector('#btn-filter')
 const searchBox = document.querySelector('#search-box')
-const api = 'http://localhost:5000'
+// const api = 'http://localhost:5000'
+const api = 'https://student-score-filter-backend.herokuapp.com/'
 let tempArray = []
 let records = []
 
