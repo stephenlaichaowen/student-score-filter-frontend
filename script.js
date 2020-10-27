@@ -51,7 +51,21 @@ async function submitForm(e) {
   name.value = ''
   score.value = ''
 
-  location.reload();
+  const data = await res.json()
+  
+  list.innerHTML = ''
+  data.length > 0 ? data.forEach(student => {
+    list.innerHTML += `
+        <tr>
+          <td>${student.name}</td>
+          <td>${student.score}</td>
+        </tr>
+      `
+  }) : ''
+
+
+
+  // location.reload();
 
 }
 
