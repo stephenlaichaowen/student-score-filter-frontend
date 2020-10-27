@@ -22,12 +22,18 @@ async function getRecords() {
     list.innerHTML += `
       <tr>
         <td>${student.name}</td>
-        <td>${student.score}</td>        
-        <td onclick="console.log(${student.id});alert('Are you sure to delete this itme ?')">&#10006;</td>
+        <td>${student.score}</td>   
+        <td id="del" onclick="delRecord(${student.id})">&#10006;</td>
       </tr>
     `
   })
+}
 
+async function delRecord(id) {
+  const res = await fetch(`${api}/${id}`, { method: 'DELETE' })
+  const status = await res.json()
+  console.log(status);
+  // getRecords()
 }
 
 async function submitForm(e) {
