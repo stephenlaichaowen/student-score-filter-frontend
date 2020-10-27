@@ -72,9 +72,6 @@ function searchKey() {
         </tr>
       `
   }) : ''
-
-  const btnDel = document.querySelector('#del')
-  btnDel.addEventListener('click', () => console.log('are you sure to delete this itme ?'))
   
   if (searchBox.value === '') getRecords()
 }
