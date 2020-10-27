@@ -4,7 +4,6 @@
   "main": "script.js",
   "scripts": {
     "dev": "live-server --port=8080",
-    "remote": "git remote add origin https://github.com/stephenlaichaowen/student-score-filter-frontend.git",
     "github": "git add . && git commit -m 'commit' && git push origin master"
   },
   "keywords": [],
