@@ -44,8 +44,7 @@ async function submitForm(e) {
     body: JSON.stringify(tempData),
     credentials: 'include',
     headers: { 'Content-Type': 'application/json' },
-    method: 'POST',
-    mode: 'no-cors'
+    method: 'POST'
   })
 
   name.value = ''
