@@ -15,11 +15,12 @@ searchBox.addEventListener('keyup', searchKey)
 // btnFilter.addEventListener('click', filterScore)
 
 async function getRecords() {
+  
   const res = await fetch(api)
   records = await res.json()
-
-  list.innerHTML = ''
+  
   records.forEach(student => {
+    list.innerHTML = ''
     list.innerHTML += `
       <tr>
         <td>${student.name}</td>
