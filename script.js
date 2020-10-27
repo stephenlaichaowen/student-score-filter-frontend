@@ -42,7 +42,6 @@ async function submitForm(e) {
 
   await fetch(api, {
     body: JSON.stringify(tempData),
-    credentials: '*',
     headers: { 'Content-Type': 'application/json' },
     method: 'POST',
     mode: 'cors'
