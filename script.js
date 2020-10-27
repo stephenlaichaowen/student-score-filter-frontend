@@ -26,11 +26,9 @@ async function getRecords() {
         <td onclick="del(${student.id})">&#10006;</td>
       </tr>
     `
+    function del(id) { console.log(id) }
   })
 
-  function del(id) {
-    console.log(id);
-  }
 }
 
 async function submitForm(e) {
