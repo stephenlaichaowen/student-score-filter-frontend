@@ -45,7 +45,7 @@ async function submitForm(e) {
     credentials: 'include',
     headers: { 'Content-Type': 'application/json' },
     method: 'POST',
-    mode: 'cors'
+    mode: 'no-cors'
   })
 
   name.value = ''
