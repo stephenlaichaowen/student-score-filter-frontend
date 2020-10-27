@@ -40,7 +40,7 @@ async function submitForm(e) {
     score: score.value
   }
 
-  await fetch(api, {
+  const res = await fetch(api, {
     body: JSON.stringify(tempData),
     headers: { 'Content-Type': 'application/json' },
     method: 'POST',
@@ -50,9 +50,11 @@ async function submitForm(e) {
   name.value = ''
   score.value = ''
 
-  list.innerHTML = ''
-  getRecords()
-
+  if (res.status === 'write success') {
+    list.innerHTML = ''
+    getRecords()
+  }
+  
   // location.reload();
 
 }
